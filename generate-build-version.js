@@ -9,6 +9,7 @@ const jsonData = {
 };
 
 var jsonContent = JSON.stringify(jsonData);
+console.log(jsonContent)
 
 fs.writeFile('./public/meta.json', jsonContent, 'utf8', function(err) {
   if (err) {
