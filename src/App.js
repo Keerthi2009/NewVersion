@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import CacheBuster from './CacheBuster';
-import './App.css';
+import React, { Component } from "react";
+import CacheBuster from "./CacheBuster";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -18,7 +18,11 @@ class App extends Component {
                 <h1>Cache Bustings </h1>
                 {console.log(global.appVersion)}
                 <p>
-                  Bundle version : <code>v{global.appVersion}</code>
+                  Bundle version :{" "}
+                  <code>
+                    v{global.appVersion}
+                    {Math.random()}
+                  </code>
                 </p>
               </header>
             </div>
