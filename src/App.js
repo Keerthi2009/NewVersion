@@ -21,7 +21,7 @@ class App extends Component {
                   Bundle version :{" "}
                   <code>
                     v{global.appVersion}
-                    {Math.random()}:abbjj
+                    {Math.random()}:abbjjkdsal
                   </code>
                 </p>
               </header>
