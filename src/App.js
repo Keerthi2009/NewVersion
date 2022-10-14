@@ -18,7 +18,7 @@ class App extends Component {
                 <h1>Cache Bustings </h1>
                 {console.log(global.appVersion)}
                 <p>
-                  Bundle version : <code>v{global.appVersion}aa</code>
+                  Bundle version : <code>v{global.appVersion}</code>
                 </p>
               </header>
             </div>
