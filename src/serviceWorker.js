@@ -135,7 +135,8 @@
 //   }
 // }
 
-// import React from "react";
+import React from "react";
+import axios from "axios";
 // import {useSnackbar} from 'notistack';
 
 // const {enqueueSnackbar, closeSnackbar} = useSnackbar();
@@ -147,6 +148,15 @@ export function register(swUrl, config) {
     console.log(global.appVersion);
     // window.location.reload();
   }
+
+  axios
+    .get("/meta.json")
+    .then((res) => {
+      if (res.data.version < global.appVersion) {
+        console.log(global.appVersion);
+      }
+    })
+    .catch((err) => console.log(err));
 
   // console.log(config);
   // console.log(process.env.REACT_APP_VERSION);
