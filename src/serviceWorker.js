@@ -135,81 +135,74 @@
 //   }
 // }
 
-
-import React from 'react'
+import React from "react";
 // import {useSnackbar} from 'notistack';
 
 // const {enqueueSnackbar, closeSnackbar} = useSnackbar();
 
 // import { toast } from 'react-toastify'
 
-
 export function register(swUrl, config) {
-  console.log(config)
+  console.log(config);
+  console.log(process.env.REACT_APP_VERSION);
+  navigator.serviceWorker
+    .register(swUrl)
+    .then((registration) => {
+      // Check for updates at start.
 
-    navigator.serviceWorker.register(swUrl)
-      .then(registration => {
-        // Check for updates at start.
+      registration.update();
+      // Check for updates every 5 min.
+      setInterval(() => {
         registration.update();
-        // Check for updates every 5 min.
-        setInterval(() => {
-          registration.update();
-          console.debug("Checked for update...");
-        }, (1000 * 60) * 0.5);
-  
-        registration.onupdatefound = () => {
-          const installingWorker = registration.installing;
+        console.debug("Checked for update...");
+      }, 1000 * 60 * 0.5);
+
+      registration.onupdatefound = () => {
+        const installingWorker = registration.installing;
+        window.location.reload();
+
+        if (installingWorker == null) {
+          return;
+        }
+
+        installingWorker.onstatechange = () => {
           window.location.reload();
 
-          if (installingWorker == null) {
-            return;
-          }
-  
-          installingWorker.onstatechange = () => {
-            window.location.reload();
+          if (installingWorker.state === "installed") {
+            if (navigator.serviceWorker.controller) {
+              // At this point, the updated precached content has been fetched,
+              // but the previous service worker will still serve the older
+              // content until all client tabs are closed.
+              console.log(
+                "New content is available and will be used when all " +
+                  "tabs for this page are closed. See https://bit.ly/CRA-PWA."
+              );
 
-            if (installingWorker.state === 'installed') {
-              if (navigator.serviceWorker.controller) {
-                // At this point, the updated precached content has been fetched,
-                // but the previous service worker will still serve the older
-                // content until all client tabs are closed.
-                console.log(
-                  'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
-                );
-  
-                // toast.info(`Update available! To update, close all windows and reopen.`, {
-                //   toastId: "appUpdateAvailable", // Prevent duplicate toasts
-                //   onClick: () => window.close(), // Closes windows on click
-                //   autoClose: false // Prevents toast from auto closing
-                // });
-  
-                // Execute callback
-                if (config && config.onUpdate) {
-                  config.onUpdate(registration);
-                }
-              } else {
-                // At this point, everything has been precached.
-                // It's the perfect time to display a
-                // "Content is cached for offline use." message.
-                console.log('Content is cached for offline use.');
-                // Execute callback
-                if (config && config.onSuccess) {
-                  config.onSuccess(registration);
-                }
+              // toast.info(`Update available! To update, close all windows and reopen.`, {
+              //   toastId: "appUpdateAvailable", // Prevent duplicate toasts
+              //   onClick: () => window.close(), // Closes windows on click
+              //   autoClose: false // Prevents toast from auto closing
+              // });
+
+              // Execute callback
+              if (config && config.onUpdate) {
+                config.onUpdate(registration);
+              }
+            } else {
+              // At this point, everything has been precached.
+              // It's the perfect time to display a
+              // "Content is cached for offline use." message.
+              console.log("Content is cached for offline use.");
+              // Execute callback
+              if (config && config.onSuccess) {
+                config.onSuccess(registration);
               }
             }
-          };
+          }
         };
-      }).catch(error => {
-        console.error('Error during service worker registration:', error);
-      });
-  }
-
-
-
-
-
-
-
-
+      };
+    })
+    .catch((error) => {
+      console.error("Error during service worker registration:", error);
+    });
+}
