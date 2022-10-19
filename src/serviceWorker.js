@@ -144,7 +144,7 @@ import React from "react";
 
 export function register(swUrl, config) {
   console.log(config);
-  console.log(process.env.REACT_APP_VERSION);
+  // console.log(process.env.REACT_APP_VERSION);
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
