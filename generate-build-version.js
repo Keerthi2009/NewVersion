@@ -1,7 +1,6 @@
 /* eslint-disable */
 const fs = require("fs");
 const packageJson = require("./package.json");
-const serviceWorker = require("./src/serviceWorker.js");
 
 const appVersion = packageJson.version;
 
