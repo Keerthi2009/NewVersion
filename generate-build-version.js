@@ -8,9 +8,8 @@ const appVersion = packageJson.version;
 const jsonData = {
   version: appVersion,
 };
-console.log(serviceWorker.register());
 var jsonContent = JSON.stringify(jsonData);
-// console.log(appVersion)
+console.log(appVersion);
 
 fs.writeFile("./public/meta.json", jsonContent, "utf8", function (err) {
   if (err) {
