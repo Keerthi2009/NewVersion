@@ -153,7 +153,7 @@ export function register(swUrl, config) {
     .get("/meta.json")
     .then((res) => {
       if (res.data.version < global.appVersion) {
-        console.log(global.appVersion);
+        console.log("versionchange");
       }
     })
     .catch((err) => console.log(err));
