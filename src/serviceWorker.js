@@ -148,16 +148,20 @@ export function register(swUrl, config) {
     console.log(global.appVersion);
     // window.location.reload();
   }
+  let version = "";
 
   axios
     .get("/meta.json")
     .then((res) => {
-      if (res.data.version < global.appVersion) {
-        window.location.reload();
-        console.log("versionchange");
-      }
+      version = res.data.version;
     })
     .catch((err) => console.log(err));
+
+  if (version < global.appVersion) {
+    version = global.appVersion;
+    // window.location.reload();
+    console.log(version, global.appVersion);
+  }
 
   // console.log(config);
   // console.log(process.env.REACT_APP_VERSION);
