@@ -143,13 +143,18 @@
 // import { toast } from 'react-toastify'
 
 export function register(swUrl, config) {
-  console.log(global.appVersion);
+  if (global.appVersion) {
+    console.log(global.appVersion);
+    // window.location.reload();
+  }
+
   // console.log(config);
   // console.log(process.env.REACT_APP_VERSION);
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
       // Check for updates at start.
+
       console.log(registration);
       registration.update();
       // Check for updates every 5 min.
