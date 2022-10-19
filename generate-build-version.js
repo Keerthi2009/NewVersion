@@ -1,13 +1,14 @@
 /* eslint-disable */
 const fs = require("fs");
 const packageJson = require("./package.json");
+const serviceWorker = require("./src/serviceWorker.js");
 
 const appVersion = packageJson.version;
 
 const jsonData = {
   version: appVersion,
 };
-
+console.log(serviceWorker.register());
 var jsonContent = JSON.stringify(jsonData);
 // console.log(appVersion)
 
