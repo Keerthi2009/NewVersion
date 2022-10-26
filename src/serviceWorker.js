@@ -159,11 +159,6 @@ export function register(swUrl, config) {
     .catch((err) => console.log(err));
   console.log(version);
 
-  if (version < global.appVersion) {
-    version = global.appVersion;
-    window.location.reload();
-  }
-
   // console.log(config);
   // console.log(process.env.REACT_APP_VERSION);
   navigator.serviceWorker
@@ -173,6 +168,11 @@ export function register(swUrl, config) {
 
       console.log(registration);
       registration.update();
+
+      if (version < global.appVersion) {
+        version = global.appVersion;
+        window.location.reload();
+      }
       // Check for updates every 5 min.
       setInterval(() => {
         registration.update();
