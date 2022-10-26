@@ -153,12 +153,12 @@ export function register(swUrl, config) {
   axios
     .get("/meta.json")
     .then((res) => {
-      version = res.data.version;
+      console.log(res);
     })
     .catch((err) => console.log(err));
 
   if (version < global.appVersion) {
-    console.log(version, global.appVersion);
+    console.log(version);
 
     version = global.appVersion;
     // window.location.reload();
