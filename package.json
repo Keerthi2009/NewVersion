@@ -16,7 +16,7 @@
   },
   "scripts": {
     "clean": "rm -rf build",
-    "prebuild": "npm run generate-build-version && react-scripts build && npm version minor",
+    "prebuild": "npm run generate-build-version ",
     "generate-build-version": "node generate-build-version",
     "build:major": " npm version minor",
     "start": "react-scripts start",
