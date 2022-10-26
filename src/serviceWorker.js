@@ -158,9 +158,10 @@ export function register(swUrl, config) {
     .catch((err) => console.log(err));
 
   if (version < global.appVersion) {
+    console.log(version, global.appVersion);
+
     version = global.appVersion;
     // window.location.reload();
-    console.log(version, global.appVersion);
   }
 
   // console.log(config);
