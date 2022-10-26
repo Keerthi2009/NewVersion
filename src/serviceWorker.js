@@ -180,14 +180,14 @@ export function register(swUrl, config) {
 
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
-        // window.location.reload();
+        window.location.reload();
 
         if (installingWorker == null) {
           return;
         }
 
         installingWorker.onstatechange = () => {
-          // window.location.reload();
+          window.location.reload();
 
           if (installingWorker.state === "installed") {
             if (navigator.serviceWorker.controller) {
