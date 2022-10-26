@@ -148,12 +148,13 @@ export function register(swUrl, config) {
     console.log(global.appVersion);
     // window.location.reload();
   }
-  let version = "";
+  let version;
 
   axios
     .get("/meta.json")
     .then((res) => {
-      console.log(res);
+      console.log(res.data.version);
+      version = res.data.version;
     })
     .catch((err) => console.log(err));
 
@@ -161,7 +162,7 @@ export function register(swUrl, config) {
     console.log(version);
 
     version = global.appVersion;
-    // window.location.reload();
+    window.location.reload();
   }
 
   // console.log(config);
@@ -181,14 +182,14 @@ export function register(swUrl, config) {
 
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
-        window.location.reload();
+        // window.location.reload();
 
         if (installingWorker == null) {
           return;
         }
 
         installingWorker.onstatechange = () => {
-          window.location.reload();
+          // window.location.reload();
 
           if (installingWorker.state === "installed") {
             if (navigator.serviceWorker.controller) {
