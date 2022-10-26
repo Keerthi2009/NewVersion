@@ -1,6 +1,6 @@
 {
   "name": "cache-busting-example",
-  "version": "5.36.0",
+  "version": "5.35.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "clean": "rm -rf build",
-    "prebuild": "npm run generate-build-version",
+    "prebuild": "npm run generate-build-version && react-scripts build && npm version minor",
     "generate-build-version": "node generate-build-version",
     "build:major": " react-scripts build && npm version minor",
     "start": "react-scripts start",
