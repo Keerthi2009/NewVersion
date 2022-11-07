@@ -1,14 +1,17 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import CacheBuster from "./CacheBuster";
 import "./App.css";
 import axios from "axios";
 
 const App = () => {
   const [data, setData] = useState();
-  axios
-    .get("/data.json")
-    .then((res) => setData(res.data))
-    .catch((err) => console.log(err));
+  useEffect(() => {
+    axios
+      .get("/data.json")
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <CacheBuster>
       {({ loading, isLatestVersion, refreshCacheAndReload }) => {
@@ -25,7 +28,7 @@ const App = () => {
                 Bundle version :{" "}
                 <code>
                   v{global.appVersion}
-                  {data.name}
+                  {data ? data.name : ""}
                 </code>
               </p>
             </header>
