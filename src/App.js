@@ -27,7 +27,7 @@ const App = () => {
               <p>
                 Bundle version :{" "}
                 <code>
-                  v{global.appVersion}
+                  v{global.appVersion}sa
                   {data ? data.name : ""}
                 </code>
               </p>
