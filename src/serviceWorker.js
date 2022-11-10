@@ -144,23 +144,23 @@ import axios from "axios";
 // import { toast } from 'react-toastify'
 
 export function register(swUrl, config) {
-  // if (global.appVersion) {
-  //   console.log(global.appVersion);
-  //   // window.location.reload();
-  // }
-  // let version;
+  if (global.appVersion) {
+    console.log(global.appVersion);
+    // window.location.reload();
+  }
+  let version;
 
-  // axios
-  //   .get("/meta.json")
-  //   .then((res) => {
-  //     console.log(res.data.version);
-  //     version = res.data.version;
-  //   })
-  //   .catch((err) => console.log(err));
-  // console.log(version);
+  axios
+    .get("/meta.json")
+    .then((res) => {
+      console.log(res.data.version);
+      version = res.data.version;
+    })
+    .catch((err) => console.log(err));
+  console.log(version);
 
-  // console.log(config);
-  // console.log(process.env.REACT_APP_VERSION);
+  console.log(config);
+  console.log(process.env.REACT_APP_VERSION);
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
