@@ -25,7 +25,7 @@ const App = () => {
             <header className="App-header">
               <h1>Cache Bustings </h1>
               <p>
-                Bundle version : <code>v{global.appVersion}</code>
+                Bundle version : <code>v{global.appVersion}sda</code>
               </p>
               <button>click</button>
             </header>
